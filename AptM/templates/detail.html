@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+            {% for user in repair.user.all %}
+                <li><strong>{{ user.get_role_display }}</strong>
+                    - {{ user.first_name }} {{ user.last_name }}; {{ user.email }}
+                </li>
+            {% endfor %}
+            <li><strong>Описание: </strong> {{ repair.description }}</li>
+        <br>
+            <p>{{ repair.type_repair  }}</p>
+
+    </div>
+    <br>
+    {% if user.role == "Master" %}
+        <div class="d-grid">
+            <button type="button" class="btn btn-primary btn-block">Взфться за работу</button>
+        </div>
+    {% endif %}
+{% endblock content %}
+
